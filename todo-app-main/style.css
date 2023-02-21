@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=DM+Sans:wght@400;700&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Inter:wght@300;500;700&family=Josefin+Sans:wght@400;700&family=Kumbh+Sans:wght@400;700&family=League+Spartan:wght@700&family=Poppins:wght@400;500;600;700&family=Roboto:wght@300&family=Space+Grotesk:wght@500&display=swap');
+
+/* RESETS*/
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/*
+    2. Remove default margin
+  */
+* {
+  margin: 0;
+}
+/*
+    Typographic tweaks!
+    4. Add accessible line-height
+    5. Improve text rendering
+  */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+/*
+    6. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+    7. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/*
+    8. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+ul,
+ol {
+  list-style-type: none;
+  padding-left: 0;
+}
+ul,
+ol {
+  list-style-type: none;
+  padding-left: 0;
+}
+button {
+  padding: 0px;
+}
+:root {
+  --Bright-Blue: hsl(220, 98%, 61%) --Check-linear-gradient hsl(192, 100%, 67%)
+    to hsl(280, 87%, 65%);
+  --white: #fff;
+  /* ### Neutral */
+
+  /* ### Light Theme */
+
+  --Very-Light-Gray: hsl(0, 0%, 98%);
+  --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+  --Light-Grayish-Blue-light: hsl(233, 11%, 84%);
+  --Dark-Grayish-Blue-light: hsl(236, 9%, 61%);
+  --Very-Dark-Grayish-Blue-light: hsl(235, 19%, 35%);
+
+  /* ### Dark Theme */
+
+  --Very-Dark-Blue: hsl(235, 21%, 11%);
+  --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+  --Light-Grayish-Blue: hsl(234, 39%, 85%);
+  --Light-Grayish-Blue2: hsl(236, 33%, 92%);
+  --Dark-Grayish-Blue: hsl(234, 11%, 52%);
+  --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+  --Very-Dark-Grayish-Blue3: hsl(237, 14%, 26%);
+}
+/* styles */
+body {
+  font-family: 'Barlow', sans-serif;
+  font-family: 'DM Sans', sans-serif;
+  font-family: 'Fraunces', serif;
+  font-family: 'Inter', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Kumbh Sans', sans-serif;
+  font-family: 'League Spartan', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: var(--Very-Dark-Blue);
+  font-size: 0.9rem;
+}
+header {
+  height: 13rem;
+  background: url(./images/bg-mobile-dark.jpg) no-repeat;
+  background-size: 100% 100%;
+}
+main,
+footer {
+  width: 100vw;
+}
+main {
+  background-color: var(--Very-Dark-Grayish-Blue);
+  height: fit-content;
+  margin: 0px auto;
+  border-radius: 5px;
+  transform: translateY(-2rem);
+  max-height: 21.5rem;
+  padding-top: 0px;
+}
+main,
+.header__main,
+footer {
+  display: flex;
+  align-items: center;
+  color: var(--Light-Grayish-Blue);
+}
+main,
+.header__main {
+  flex-direction: column;
+  overflow: scroll;
+}
+.header__main,
+footer {
+  justify-content: center;
+}
+h1 {
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+}
+
+.todo-list__list,
+.header__main,
+main {
+  width: 85%;
+}
+.header__main {
+  margin: 0px auto;
+  height: 100%;
+  gap: 2rem;
+}
+.header__input-container,
+.header__theme {
+  min-width: 100%;
+}
+.header__input-container {
+  display: flex;
+}
+.header__theme {
+  display: flex;
+}
+.input {
+  width: 100%;
+  padding: 1rem 0px;
+  border: none;
+  color: var(--white);
+  caret-color: rgb(212, 15, 212);
+  outline: none;
+}
+/* .input:focus,
+.input:active,
+.input:hover,
+.input:focus-within,
+.input:focus-visible {
+  border: 8px solid red;
+  border: none;
+} */
+.input,
+.todo__circle,
+.todo__circle-circle {
+  background-color: var(--Very-Dark-Grayish-Blue);
+}
+.todo__circle {
+  width: fit-content;
+  padding-left: 1rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.todo__circle-circle {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--Dark-Grayish-Blue);
+}
+.main__todo-circle {
+  margin-left: 1rem;
+}
+.header__theme {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+.header__theme button {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+.todo-list__list {
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  background-color: var(--Very-Dark-Grayish-Blue);
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 0.2rem;
+  border-bottom: 0.5px solid var(--Dark-Grayish-Blue);
+  color: var(--Light-Grayish-Blue);
+  padding: 10px 0px;
+}
+.main__todo-circle__button {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--Dark-Grayish-Blue);
+  background-color: rgba(255, 255, 255, 0);
+  margin-right: 0.5rem;
+}
+.todo-list {
+  width: 100%;
+}
+.todo-list__list p {
+  display: flex;
+  align-items: center;
+}
+.todo-list__footer {
+  display: flex;
+  justify-content: space-between;
+  color: var(--Dark-Grayish-Blue);
+  padding: 0.9rem;
+}
+footer {
+  width: 85%;
+  margin: 0px auto;
+  background-color: var(--Very-Dark-Grayish-Blue);
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  border-radius: 5px;
+}
+footer button {
+  margin-right: 1.2rem;
+  color: var(--Dark-Grayish-Blue);
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  font-weight: 700;
+}
+
+/* Dom classes for javascript */
+.cancel {
+  height: 1rem;
+  justify-self: flex-end;
+  display: none;
+  margin: auto;
+  filter: brightness(150%);
+}
+.button-active {
+  background: url(./images/icon-check.svg),
+    linear-gradient(to bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-position: 50% 50%, 50% 50%;
+  background-repeat: no-repeat, no-repeat;
+}
+.hidden {
+  display: none;
+}
+.visible {
+  display: block;
+}
+.strike-through {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.completed {
+  background-color: var(--Very-Dark-Grayish-Blue);
+}
+.header__main,
+main,
+footer {
+  width: clamp(10rem, 85%, 30rem);
+}
+.clear {
+  background-color: var(--Very-Dark-Grayish-Blue);
+  border: none;
+  color: var(--Dark-Grayish-Blue);
+}
+.todo-list__footer__absolute {
+  display: none;
+  color: var(--Dark-Grayish-Blue);
+}
+
+/* mobile light theme  */
+.light body {
+  background-color: var(--Very-Light-Grayish-Blue);
+}
+/* .light:is(
+    .header__input-container,
+    main,
+    .todo-list__list,
+    .input,
+    .todo__circle,
+    .todo__circle-circle
+  ) {
+  background-color: var(--Very-Light-Gray);
+} */
+.light .header__input-container,
+.light main,
+.light .todo-list__list,
+.light .input,
+.light .todo__circle,
+.light .todo__circle-circle,
+.light footer {
+  background-color: var(--Very-Light-Gray);
+  color: #000;
+}
+.light .todo-list__list {
+  border-bottom: 0.5px solid var(--Light-Grayish-Blue);
+}
+.light .completed,
+.light .clear {
+  background-color: rgba(255, 255, 255, 0);
+}
+.light header {
+  background-image: url(./images/bg-mobile-light.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+/* .light .todo-list__footer__absolute button {
+  color: var(--Very-Dark-Grayish-Blue3);
+} */
+.todo-list__footer,
+.main__todo-circle__button {
+  cursor: pointer;
+}
+.all:focus,
+.completed:focus,
+.active:focus {
+  color: blue;
+}
+#theme-switch {
+  position: relative;
+  width: 27px;
+  height: 27px;
+}
+.theme__moon,
+.theme__sun {
+  position: absolute;
+  bottom: 0px;
+}
+main,
+footer {
+  box-shadow: 0px 10px 10px 10px rgba(0, 0, 0, 0.155);
+}
+/* .theme__moon {
+  display: none;
+} */
+@media screen and (min-width: 700px) {
+  header {
+    background-image: url(./images/bg-desktop-dark.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  footer {
+    display: none;
+  }
+  .todo-list__footer__absolute {
+    display: flex;
+    gap: 1rem;
+    font-weight: 700;
+  }
+  main {
+    max-height: 25rem;
+    box-shadow: 0px 10px 10px 10px rgba(0, 0, 0, 0.074);
+  }
+  .todo-list__footer__absolute button {
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    color: inherit;
+  }
+  /* Desktop light mode */
+  .light header {
+    background-image: url(./images/bg-desktop-light.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+}

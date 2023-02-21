@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend Mentor | Todo app</title>
+</head>
+
+<body>
+  <header>
+    <div class="header__main">
+      <div class="header__theme">
+        <h1> Todo</h1>
+        <button id="theme-switch"><img class="theme__sun" src="./images/icon-sun.svg" alt="sun img">
+          <img class="theme__moon" src="./images/icon-moon.svg" alt="moon img">
+        </button>
+      </div>
+      <div class="header__input-container">
+        <div class="todo__circle">
+          <div class="todo__circle-circle"></div>
+        </div>
+        <input class="input" type="text" placeholder="Create a new todo...">
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="todo-list">
+      <div class="todo-list__list">
+        <div class="main__todo-circle">
+          <button class="main__todo-circle__button"></button>
+        </div>
+        <p>Hey! create a todo list!</p>
+        <img class="cancel" src="./images/icon-cross.svg" alt="cancel">
+      </div>
+      <div class="todo-list__footer">
+        <p> <span class="number-of-todo"></span> items left</p>
+        <div class="todo-list__footer__absolute">
+          <button class="all">All</button>
+          <button class="active">Active</button>
+          <button class="completed">Completed</button>
+        </div>
+        <button class="clear"> Clear Completed</button>
+      </div>
+    </section>
+  </main>
+  <footer> <button class="all">All</button>
+    <button class="active">Active</button>
+    <button class="completed">Completed</button>
+  </footer>
+  <script src="main.js"></script>
+</body>
+
+</html>
