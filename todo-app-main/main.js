@@ -1,21 +1,36 @@
-'use strict';
-const input = document.querySelector('.input');
-const completedSection = document.querySelectorAll('.completed');
-const clear = document.querySelector('.clear');
-const allSection = document.querySelectorAll('.all');
-const activeSection = document.querySelectorAll('.active');
-const themeSwitch = document.querySelector('#theme-switch');
-const todoList = document.querySelector('.todo-list');
-const numberOfTodo = document.querySelector('.number-of-todo');
+"use strict";
+const input = document.querySelector(".input");
+const completedSection = document.querySelectorAll(".completed");
+const clear = document.querySelector(".clear");
+const allSection = document.querySelectorAll(".all");
+const activeSection = document.querySelectorAll(".active");
+const themeSwitch = document.querySelector("#theme-switch");
+const todoList = document.querySelector(".todo-list");
+const numberOfTodo = document.querySelector(".number-of-todo");
 
 let storedTodo = [];
+let todoItems = JSON.parse(localStorage.getItem("todos"));
 // let storedTodo = localStorage.setItem('todo',JSON.stringify())
+
+if (todoItems) {
+  let html;
+  todoItems.forEach((todo) => {
+    html += `  <div class="todo-list__list">
+        <div class="main__todo-circle">
+          <button class="main__todo-circle__button"></button>
+        </div>
+        <p>${todo}</p>
+        <img class="cancel" src="./images/icon-cross.svg" alt="cancel">
+        </div>`;
+  });
+  todoList.insertAdjacentHTML("afterbegin", html);
+}
 
 const todo = function () {
   // inserts todo on the interface
 
-  input.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
+  input.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
       const markUp = `  <div class="todo-list__list">
         <div class="main__todo-circle">
           <button class="main__todo-circle__button"></button>
@@ -24,11 +39,14 @@ const todo = function () {
         <img class="cancel" src="./images/icon-cross.svg" alt="cancel">
         </div>`;
 
-      if (input.value === '') return;
+      if (input.value === "") return;
 
-      todoList.insertAdjacentHTML('afterbegin', markUp);
+      todoList.insertAdjacentHTML("afterbegin", markUp);
       // const storeTodo = todoList.insertAdjacentHTML('afterbegin', markUp);
-      input.value = '';
+      storedTodo.push(input.value);
+      console.log(storedTodo);
+      localStorage.setItem("todos", JSON.stringify(storedTodo));
+      input.value = "";
 
       // localStorage failed attempt
 
@@ -45,44 +63,44 @@ const todo = function () {
       // selecting the cancel button, completed button and todo list from the Dom
 
       const completedCircle = document.querySelector(
-        '.main__todo-circle__button'
+        ".main__todo-circle__button"
       );
-      const todoListList = document.querySelectorAll('.todo-list__list');
-      const cancel = document.querySelector('.cancel');
+      const todoListList = document.querySelectorAll(".todo-list__list");
+      const cancel = document.querySelector(".cancel");
 
       // input.value = '';
 
       // what happens when i press the completed btn
 
-      completedCircle.addEventListener('click', function () {
-        completedCircle.classList.toggle('button-active');
-        cancel.classList.toggle('visible');
+      completedCircle.addEventListener("click", function () {
+        completedCircle.classList.toggle("button-active");
+        cancel.classList.toggle("visible");
         completedCircle
-          .closest('.main__todo-circle')
-          .nextElementSibling.classList.toggle('strike-through');
+          .closest(".main__todo-circle")
+          .nextElementSibling.classList.toggle("strike-through");
         completedCircle
-          .closest('.todo-list__list')
-          .classList.toggle('completed');
+          .closest(".todo-list__list")
+          .classList.toggle("completed");
       });
 
       // what happens when i press the cancel btn
 
-      cancel.addEventListener('click', function () {
-        cancel.closest('.todo-list__list').style.display = 'none';
+      cancel.addEventListener("click", function () {
+        cancel.closest(".todo-list__list").style.display = "none";
       });
 
       // what happens when i press the completed section btn
 
-      completedSection.forEach(comp => {
-        comp.addEventListener('click', function () {
-          todoListList.forEach(tdl => {
-            if (!tdl.classList.contains('completed')) {
-              tdl.classList.add('hidden');
+      completedSection.forEach((comp) => {
+        comp.addEventListener("click", function () {
+          todoListList.forEach((tdl) => {
+            if (!tdl.classList.contains("completed")) {
+              tdl.classList.add("hidden");
             }
           });
-          todoListList.forEach(tdl => {
-            if (tdl.classList.contains('completed')) {
-              tdl.classList.remove('hidden');
+          todoListList.forEach((tdl) => {
+            if (tdl.classList.contains("completed")) {
+              tdl.classList.remove("hidden");
             }
           });
         });
@@ -90,16 +108,16 @@ const todo = function () {
 
       // what happens when i press the active section btn
 
-      activeSection.forEach(act =>
-        act.addEventListener('click', function () {
-          todoListList.forEach(tdl => {
-            if (tdl.classList.contains('completed')) {
-              tdl.classList.add('hidden');
+      activeSection.forEach((act) =>
+        act.addEventListener("click", function () {
+          todoListList.forEach((tdl) => {
+            if (tdl.classList.contains("completed")) {
+              tdl.classList.add("hidden");
             }
           });
-          todoListList.forEach(tdl => {
-            if (!tdl.classList.contains('completed')) {
-              tdl.classList.remove('hidden');
+          todoListList.forEach((tdl) => {
+            if (!tdl.classList.contains("completed")) {
+              tdl.classList.remove("hidden");
             }
           });
         })
@@ -107,19 +125,19 @@ const todo = function () {
 
       // what happens when i press the all section btn
 
-      allSection.forEach(all => {
-        all.addEventListener('click', function () {
-          todoListList.forEach(tdl => {
-            tdl.classList.remove('hidden');
+      allSection.forEach((all) => {
+        all.addEventListener("click", function () {
+          todoListList.forEach((tdl) => {
+            tdl.classList.remove("hidden");
           });
         });
         todoListList.forEach((tdl, i) => {
           let arg = 0;
-          if (!tdl.classList.contains('completed')) {
+          if (!tdl.classList.contains("completed")) {
             arg = arg + i;
             numberOfTodo.textContent = arg;
           }
-          if (tdl.classList.contains('completed')) {
+          if (tdl.classList.contains("completed")) {
             arg = arg - i;
             numberOfTodo.textContent = arg;
           }
@@ -128,10 +146,10 @@ const todo = function () {
 
       // what happens when i press the clear btn
 
-      clear.addEventListener('click', function () {
-        todoListList.forEach(tdl => {
-          if (tdl.classList.contains('completed')) {
-            tdl.style.display = 'none';
+      clear.addEventListener("click", function () {
+        todoListList.forEach((tdl) => {
+          if (tdl.classList.contains("completed")) {
+            tdl.style.display = "none";
           }
         });
       });
@@ -141,16 +159,16 @@ const todo = function () {
 
 todo();
 const moonThemeBtn = document.querySelector(
-  '.header__theme > button .theme__moon'
+  ".header__theme > button .theme__moon"
 );
-const sunThemeBtn = document.querySelector('.theme__sun');
+const sunThemeBtn = document.querySelector(".theme__sun");
 
 // theme functions
-moonThemeBtn.classList.add('hidden');
-themeSwitch.addEventListener('click', function () {
-  moonThemeBtn.classList.toggle('hidden');
-  sunThemeBtn.classList.toggle('hidden');
-  document.documentElement.classList.toggle('light');
+moonThemeBtn.classList.add("hidden");
+themeSwitch.addEventListener("click", function () {
+  moonThemeBtn.classList.toggle("hidden");
+  sunThemeBtn.classList.toggle("hidden");
+  document.documentElement.classList.toggle("light");
 });
 
 // const result = todo();
