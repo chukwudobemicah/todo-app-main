@@ -9,7 +9,25 @@ const todoList = document.querySelector('.todo-list');
 const numberOfTodo = document.querySelector('.number-of-todo');
 
 let storedTodo = [];
+let getTodo = JSON.parse(localStorage.getItem('todos'));
 // let storedTodo = localStorage.setItem('todo',JSON.stringify())
+console.log(getTodo);
+
+if (getTodo !== '') {
+  let localStorageMarkup;
+  getTodo.forEach(td => {
+    console.log(td);
+    localStorageMarkup += ` 
+     <div class="todo-list__list">
+    <div class="main__todo-circle">
+      <button class="main__todo-circle__button"></button>
+    </div>
+    <p>${td}</p>
+    <img class="cancel" src="./images/icon-cross.svg" alt="cancel">
+    </div>`;
+    todoList.insertAdjacentHTML('afterbegin', localStorageMarkup);
+  });
+}
 
 const todo = function () {
   // inserts todo on the interface
@@ -28,6 +46,8 @@ const todo = function () {
 
       todoList.insertAdjacentHTML('afterbegin', markUp);
       // const storeTodo = todoList.insertAdjacentHTML('afterbegin', markUp);
+      storedTodo.push(input.value);
+      localStorage.setItem('todos', JSON.stringify(storedTodo));
       input.value = '';
 
       // localStorage failed attempt
@@ -55,20 +75,33 @@ const todo = function () {
       // what happens when i press the completed btn
 
       completedCircle.addEventListener('click', function () {
-        completedCircle.classList.toggle('button-active');
-        cancel.classList.toggle('visible');
-        completedCircle
+        const toggleBtnActive =
+          completedCircle.classList.toggle('button-active');
+        const toggleBtnCancel = cancel.classList.toggle('visible');
+        const toggleStrikeThrough = completedCircle
           .closest('.main__todo-circle')
           .nextElementSibling.classList.toggle('strike-through');
-        completedCircle
+        const toggleBtnCompletedClass = completedCircle
           .closest('.todo-list__list')
           .classList.toggle('completed');
+
+        // storedTodo.push(toggleBtnActive);
+        // storedTodo.push(toggleBtnCancel);
+        // storedTodo.push(toggleBtnCompletedClass);
+        // storedTodo.push(toggleStrikeThrough);
+        // console.log(storedTodo);
+        // storedTodo.push();
+        // localStorage.setItem('todos', JSON.stringify(storedTodo));
       });
 
       // what happens when i press the cancel btn
 
       cancel.addEventListener('click', function () {
-        cancel.closest('.todo-list__list').style.display = 'none';
+        const closestCancel = (cancel.closest(
+          '.todo-list__list'
+        ).style.display = 'none');
+        // storedTodo.push(closestCancel);
+        // localStorage.setItem('todos', JSON.stringify(storedTodo));
       });
 
       // what happens when i press the completed section btn
